@@ -40,15 +40,12 @@ export default function Search() {
     <Autocomplete
       freeSolo
       sx={{ width: 300, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
-      getOptionLabel={(option: {
-        nameRu: string;
-        year: string;
-        type: string;
-      }) => {
-        return `${option.nameRu} ${option.year} ${movieTypes[option.type]}`;
+      getOptionLabel={(option: any) => {
+        const nameRu = option.nameRu;
+        return `${typeof nameRu === 'string' ? nameRu : ''} ${option.year} ${movieTypes[option.type]}`;
       }}
       options={data ? data.items : []}
-      onChange={(_, value: { kinopoiskId: string }) => {
+      onChange={(_, value: any) => {
         navigate(`/movie/${value?.kinopoiskId}`);
       }}
       renderInput={params => <TextField {...params} label="Search" />}
