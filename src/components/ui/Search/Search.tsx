@@ -44,7 +44,9 @@ export default function Search() {
         nameRu: string;
         year: string;
         type: string;
-      }) => `${option.nameRu} ${option.year} ${movieTypes[option.type]}`}
+      }) => {
+        return `${option.nameRu} ${option.year} ${movieTypes[option.type]}`;
+      }}
       options={data ? data.items : []}
       onChange={(_, value: { kinopoiskId: string }) => {
         navigate(`/movie/${value?.kinopoiskId}`);
